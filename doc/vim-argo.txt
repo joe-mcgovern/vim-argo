@@ -1,0 +1,61 @@
+*plugin.txt*
+                                                           *vim-argo* *plugin*
+
+==============================================================================
+CONTENTS                                                     *plugin-contents*
+  1. Introduction........................................|plugin-introduction|
+  2. Configuration.............................................|plugin-config|
+  3. Commands................................................|plugin-commands|
+
+==============================================================================
+INTRODUCTION                                             *plugin-introduction*
+
+This is a global plugin that makes developing argo workflows a bit easier.
+
+This plugin has two dependencies:
+  1. The Argo CLI: https://github.com/argoproj/argo-workflows/releases
+  2. The vim dispatch plugin: https://github.com/tpope/vim-dispatch
+
+
+==============================================================================
+CONFIGURATION                                                  *plugin-config*
+
+                                                            *g:argo_namespace*
+The namespace where argo is deployed. Defaults to 'argo'
+
+                                                            *b:argo_namespace*
+The namespace where argo is deployed, customized to the current buffer.
+Defaults to 'argo'
+
+                                                           *g:argo_executable*
+Path to the argo executable. Defaults to 'argo'
+
+                                                           *b:argo_executable*
+Path to the argo executable in the current buffer. Defaults to 'argo'
+
+==============================================================================
+COMMANDS                                                     *plugin-commands*
+
+:ArgoLint                                                          *:ArgoLint*
+  Lint the argo workflow in the current buffer. This will automatically detect
+  what kind of workflow this is (e.g. workflow, workflow template, cluster
+  workflow template) and invoke the appropriate linter accordingly.
+
+:ArgoSubmit                                                      *:ArgoSubmit*
+  Submit the current workflow to argo and monitor its progress in a new
+  window.
+
+:ArgoNewWorkflow [name]                                     *:ArgoNewWorkflow*
+  Replace the current buffer with a new workflow. This accepts an optional
+  example workflow [name] listed in argo's example workflows:
+  https://github.com/argoproj/argo-workflows/tree/master/examples The [name]
+  must not include a file extension. If no [name] is provided, it will use the
+  hello-world example workflow.
+
+:ArgoNewClusterWorkflowTemplate [name]       *:ArgoNewClusterWorkflowTemplate*
+  Inject a basic cluster workflow template in the current buffer at the
+  current cursor position. This accepts an optional [name] that will be
+  supplied as the cluster workflow template's name.
+
+
+vim:tw=78:ts=8:ft=help:norl:

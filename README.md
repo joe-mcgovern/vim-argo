@@ -1,26 +1,28 @@
 # vim-argo
 
-This vim plugin is designed to assist in the development of argo workflows. It
-depends on the argo CLI (link).
+vim-argo is intended to help making the development of [argo workflows](https://argoproj.github.io/argo-workflows/) easier. It provides a few useful commands such as:
 
-## Usecases
+* `ArgoLint` to lint workflow that's open in the current buffer.
+* `ArgoSubmit` to submit the workflow in the current buffer and monitor its progress
+in a new window.
+* `ArgoNewWorkflow` to generate a new workflow for you from one of argo's [example workflows](https://github.com/argoproj/argo-workflows/tree/master/examples).
+* And more! Run `help vim-argo` for more details
 
-### Generate a new workflow
+## Installation
 
-Call `:ArgoNewWorkflow` to replace the current buffer with a hello-world workflow
-(This could accept an optional parameter that would download the example workflow by name)
+Install using your favorite package manager, or use Vim's built-in package support:
+```
+mkdir -p ~/.vim/pack/joe-mcgovern/start
+cd ~/.vim/pack/joe-mcgovern/start
+git clone https://github.com/joe-mcgovern/vim-argo.git
+vim -u NONE -c "helptags vim-argo/doc" -c q
+```
 
-### Lint a workflow
+This plugin has two dependencies that must be installed for it to work properly:
+1. [Argo CLI](https://github.com/argoproj/argo-workflows/releases)
+2. [Vim-dispatch](https://github.com/tpope/vim-dispatch)
 
-Call `:ArgoLint` to lint the workflow in the current file
+# Developing
 
-### Submit a workflow
-
-Call `:ArgoSubmit` to submit the current workflow to argo
-(default --watch)
-
-
-## Configuration
-
-* `argo_namespace`
-* `argo_executable`
+Install [vimdoc](https://github.com/google/vimdoc) to generate docs. They can 
+be generated using `make docs`
